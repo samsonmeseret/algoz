@@ -1,4 +1,4 @@
-# Complete E-Learning Platform | Nodejs, MongoDB, Express, Pug.
+# a developing E-Learning MERN project | Nodejs, MongoDB, Express, ReactJs.
 
 ### install Nodejs, MongoDB
 
