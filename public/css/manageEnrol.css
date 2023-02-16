@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.enrol-approval-cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+table {
+  text-align: left;
+  width: auto;
+  border-collapse: collapse;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 5px grey;
+}
+table thead th {
+  background-color: #7882a4;
+  color: white;
+}
+table th {
+  padding: 10px 20px;
+}
+table td a:link,
+table td a:visited {
+  text-decoration: none;
+  padding: 7px 20px;
+  font-weight: 500;
+  color: #2c3333;
+}
+table tbody tr:hover {
+  background-color: white;
+}
+table tbody tr:hover a {
+  color: black;
+}
+table .action {
+  display: flex;
+  gap: 1rem;
+}
+table .action a:link,
+table .action a:visited {
+  display: flex;
+  gap: 0.2rem;
+}
+table .action a:link svg,
+table .action a:visited svg {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+table .action a:link span,
+table .action a:visited span {
+  font-weight: 600;
+}
+table .action .approve:link svg,
+table .action .approve:visited svg {
+  stroke: darkgreen;
+}
+table .action .approve:link span,
+table .action .approve:visited span {
+  color: darkgreen;
+}
+table .action .approve:hover svg,
+table .action .approve:active svg {
+  stroke: green;
+}
+table .action .approve:hover span,
+table .action .approve:active span {
+  color: green;
+}
+table .action .reject:link svg,
+table .action .reject:visited svg {
+  stroke: rgb(168, 8, 8);
+}
+table .action .reject:link span,
+table .action .reject:visited span {
+  color: rgb(180, 9, 9);
+}
+table .action .reject:hover svg,
+table .action .reject:active svg {
+  stroke: red;
+}
+table .action .reject:hover span,
+table .action .reject:active span {
+  color: red;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #faf7f5;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #dae0e3;
+} /*# sourceMappingURL=main.css.map */

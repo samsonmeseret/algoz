@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f3f5f6;
+}
+/* 
+.main {
+  background-color: #fff;
+  overflow: scroll;
+  scroll-behavior: smooth;
+  scrollbar-color: rgb(158, 158, 158) #ebebeb;
+  scrollbar-width: thin;
+} */
+/* .main ::-webkit-scrollbar {
+  width: 6px;
+} */
+/* .main ::-webkit-scrollbar-track {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.main ::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: darkgrey;
+  outline: 1px solid slategray;
+} */
+.main .main-container {
+  max-width: 100%;
+  margin: 0 auto;
+  /* height: 50rem; */
+  height: 100vh;
+  /* background-color: #f3f5f6; */
+}
+.main .main-container .main-item-profile {
+  margin-top: 1rem;
+  /* background-color: #f3f5f6; */
+}
+.main .main-container .main-item-profile .box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10rem;
+  width: 100%;
+  border-top-left-radius: 4rem;
+  border-top-right-radius: 4rem;
+  background-color: #e9ebeb;
+}
+.main .main-container .main-item-profile .box h2 {
+  font-size: 2rem;
+  color: #3d3d3d;
+  letter-spacing: 0.1rem;
+}
+.main .main-container .main-item-profile .img-name {
+  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+.main .main-container .main-item-profile .img-name img {
+  transform: translateY(-20%);
+  border: 5px solid white;
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+}
+.main .main-container .main-item-profile .img-name .username {
+  color: #292a2c;
+  transform: translateY(-80%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+.main .main-container .main-item-profile .img-name .username .name {
+  font-size: 2rem;
+}
+.main .main-container .main-item-profile .img-name .username .position {
+  font-size: 1.4rem;
+}
+.main .main-container .main-item-profile .info {
+  margin-left: 2rem;
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: #212529;
+}
+.main .main-container .main-item-profile {
+  margin-left: 2rem;
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: #212529;
+}
+.main .main-container .main-item-profile .info .info-item {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  color: #212529;
+}
+.main .main-container .main-item-profile .info-item svg {
+  width: 2.2rem;
+  height: 2.2rem;
+  stroke: #292a2c;
+}
+body.dark .main .main-container .main-item-profile .info-item svg {
+  stroke: #e9ebeb !important;
+}
+.main .main-container .main-item-profile .info .info-item svg {
+  width: 2.2rem;
+  height: 2.2rem;
+  stroke: #292a2c;
+}
+.main .main-container .main-item-profile .info .info-item img {
+  width: 2.5rem;
+  height: 2.5rem;
+  /* stroke: #292a2c; */
+}
+.main .main-container .main-item-profile .edit {
+  margin-top: 5rem;
+}
+.main .main-container .main-item-profile .edit .edit-link:link,
+.main .main-container .main-item-profile .edit .edit-link:visited {
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #3d3d3d;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+.main .main-container .main-item-profile .edit .edit-link:link .edit-icon,
+.main .main-container .main-item-profile .edit .edit-link:visited .edit-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.main .main-container .main-item-profile .edit .edit-link:hover,
+.main .main-container .main-item-profile .edit .edit-link:active {
+  color: green;
+}
+
+@media screen and (max-width: 780px) {
+  .main .main-container {
+    height: 57rem;
+  }
+  .main .main-container .main-item-profile .img-name {
+    display: flex;
+    flex-direction: column;
+  }
+} /*# sourceMappingURL=main.css.map */

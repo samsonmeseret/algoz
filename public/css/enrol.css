@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.enrol-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.apply:link,
+.apply:visited {
+  padding: 0.8rem 2rem;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 500;
+  background-color: white;
+  color: #5643fa;
+  outline: 1px solid #5643fa;
+  border-radius: 3rem;
+  transition: all 0.3s;
+}
+.apply:hover,
+.apply:active {
+  background-color: #5643fa;
+  color: white;
+  outline: 1px solid white;
+  transition: all 0.3s;
+  transform: scale(1.1);
+}
+body.dark .apply:link,
+body.dark .apply:visited {
+  color: #5643fa !important;
+}
+body.dark .apply:hover,
+body.dark .apply:active {
+  color: white !important;
+}
+.down {
+  margin-top: 7rem;
+}
+
+.header {
+  position: relative;
+  width: 100%;
+  height: 30rem;
+  background-image: linear-gradient(to right bottom, #2998ff, #5643fa);
+  clip-path: polygon(10% 0, 100% 0%, 90% 100%, 0% 100%);
+}
+.header img {
+  opacity: 0.2;
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.header .header-text {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  position: absolute;
+  transform: translateX(-50%);
+  top: 40%;
+  left: 50%;
+}
+.header .header-text h2 {
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: 0.5rem;
+  color: white;
+  display: block;
+}
+
+.about {
+  background-color: hsla(246deg, 95%, 62%, 0.041);
+}
+.about .overview {
+  font-size: 3rem;
+  font-weight: 300;
+  text-align: center;
+  padding: 4rem 0 0 0;
+}
+.about p {
+  width: 70%;
+  margin: 0 auto;
+  padding: 2rem 0 4rem 0;
+  font-size: 1.6rem;
+  color: rgb(61, 60, 60);
+  line-height: 2.5rem;
+}
+.about p span {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.packages {
+  width: 90%;
+  margin: 4rem auto 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  row-gap: 6rem;
+  -moz-column-gap: 2rem;
+  column-gap: 2rem;
+}
+.packages .package-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  gap: 1rem;
+}
+.packages .package-item svg {
+  width: 5rem;
+  height: 5rem;
+  stroke: rgb(83, 83, 83);
+}
+body.dark .packages .package-item svg {
+  stroke: white !important;
+}
+.packages .package-item h2 {
+  font-weight: 300;
+  font-size: 3rem;
+}
+.packages .package-item p {
+  color: #1c0abb;
+  font-size: 4rem;
+  font-weight: 200;
+}
+.packages .package-item p span {
+  font-size: 1.8rem;
+  font-weight: 300;
+} /*# sourceMappingURL=enrol.css.map */

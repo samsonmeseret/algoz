@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.manage-cont {
+  max-width: 90%;
+  margin: 5rem auto;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.head svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  stroke: darkgreen;
+}
+
+.manage-tab {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.manage-tab ul {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  font-size: 2rem;
+  padding: 1rem;
+  background-color: #e8f0f7;
+  border-radius: 0.3rem;
+}
+.manage-tab ul li {
+  list-style: none;
+}
+.manage-tab ul li a:link,
+.manage-tab ul li a:visited {
+  text-decoration: none;
+  color: #383838;
+  padding: 1rem;
+}
+.manage-tab ul li a:hover,
+.manage-tab ul li a:active {
+  color: #272727;
+  /* font-weight: 500; */
+  border-bottom: 3px solid darkgreen;
+  background: none;
+  border-radius: 0px;
+}
+.manage-tab ul li a:is(:link, :active, :visited).active-tab {
+  color: #272727;
+  font-weight: 500;
+  border-bottom: 3px solid darkgreen;
+  background: none;
+  border-radius: 0px;
+}
+/* .active {
+  color: #272727;
+  font-weight: 500;
+  border-bottom: 3px solid darkgreen;
+} */

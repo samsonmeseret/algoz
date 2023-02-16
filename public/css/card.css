@@ -1,0 +1,313 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700&display=swap");
+* {
+  font-family: "Inter", sans-serif;
+}
+html {
+  font-size: 62.5%;
+}
+.user-course {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgb(61, 60, 60);
+}
+body.dark .user-course {
+  color: inherit;
+}
+.user-course h2 {
+  font-size: 2rem;
+}
+.user-course p {
+  padding: 1rem;
+  font-size: 1.6rem;
+}
+.no-course {
+  color: orange;
+}
+.list {
+  color: #5643fa;
+}
+body.dark .user-course p {
+  color: inherit;
+}
+
+.available-div {
+  color: rgb(61, 60, 60);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+  font-size: 1.8rem;
+}
+body.dark .available-div {
+  color: inherit;
+}
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+
+  column-gap: 2rem;
+  row-gap: 4rem;
+  height: 25rem;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.card {
+  position: relative;
+  height: 25rem;
+  width: 15rem;
+  perspective: 150rem;
+  transition: all 0.8s;
+  -moz-perspective: 150rem;
+}
+.card .card-side {
+  position: absolute;
+  width: 15rem;
+  top: 0;
+  left: 0;
+  height: 25rem;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  box-shadow: 0 0 1rem 0 grey;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.card .front {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: hidden;
+  /* justify-content: space-between; */
+  background-color: rgb(255, 255, 255);
+  transition: all 0.8s;
+}
+body.dark .card .front {
+  background-color: inherit;
+}
+.card .front .img img {
+  width: 100%;
+  height: 100%;
+  /* background-size: contain; */
+  /* background-blend-mode: overlay; */
+}
+.card .front .img .bg-blend {
+  width: 100%;
+  height: 10rem;
+  position: fixed;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  background-image: linear-gradient(
+    to right bottom,
+    hsla(209, 100%, 58%, 0.507),
+    hsla(246, 95%, 62%, 0.507)
+  );
+}
+.card .front .img {
+  position: relative;
+  width: 100%;
+  height: 10rem;
+}
+.card .front .title {
+  text-align: center;
+  font-size: 1.2rem;
+  color: rgb(100, 100, 100);
+  font-weight: 600;
+}
+/* body.dark .card .front .title {
+  color: grey !important;
+} */
+
+.card .front .mobile-part {
+  display: none;
+}
+.card .front .course-about p {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 1rem;
+  color: grey;
+  /* color: black; */
+  text-align: center;
+  padding: 0.5rem 0.2rem;
+  line-height: 1.2rem;
+}
+/* body.dark .card .front .course-about p {
+  color: grey !important;
+} */
+.card .front .course-about .line {
+  width: 50%;
+  margin: 0 auto;
+  height: 1px;
+  background-color: grey;
+}
+.card .front .instructor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.card .front .instructor svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  stroke: #2998ff;
+}
+.card .front .instructor .inst {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: grey;
+}
+.card .back {
+  transform: rotateY(180deg);
+  background-image: linear-gradient(to right bottom, #2998ff, #5643fa);
+  transition: all 0.8s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.card .back .price {
+  padding-top: 1rem;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.card .back .birr {
+  font-size: 2.7rem;
+  color: white;
+  font-weight: 100;
+}
+.card .back .birr span {
+  font-size: 0.8rem;
+}
+.card .back .enrol:link,
+.card .back .enrol:visited {
+  color: #5643fa;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.7rem 1.4rem;
+  background-color: #fff;
+  border-radius: 10rem;
+  transition: all 0.3s ease;
+}
+body.dark .card .back .enrol:link,
+body.dark .card .back .enrol:visited {
+  color: #5643fa !important;
+}
+.card .back .enrol:visited:hover,
+.card .back .enrol:visited:active {
+  color: white;
+  background-color: #5643fa;
+  outline: 1px solid white;
+}
+body.dark .card .back .enrol:visited:hover,
+body.dark .card .back .enrol:visited:active {
+  color: white !important;
+  background-color: #5643fa !important;
+  outline: 1px solid white !important;
+}
+.card .back .beinst:link,
+.card .back .beinst:visited {
+  margin-top: 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  padding: 0.7rem 1.4rem;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.card .back .beinst:link:hover,
+.card .back .beinst:link:active,
+.card .back .beinst:visited:hover,
+.card .back .beinst:visited:active {
+  outline: 1px solid #fff;
+  border-radius: 10rem;
+}
+.card:hover .front {
+  transform: rotateY(-180deg);
+}
+.card:hover .back {
+  transform: rotateY(0deg);
+  transition: all 0.8s;
+} /*# sourceMappingURL=card.css.map */
+.option {
+  position: relative;
+  display: flex;
+  gap: 7rem;
+}
+.option .edit svg {
+  stroke: white;
+}
+.option .delete svg {
+  stroke: orange;
+}
+.option a:link,
+.option a:visited {
+  transition: all 0.4s ease-in;
+  padding: 0.3rem;
+  text-decoration: none;
+}
+.option a:hover,
+.option a:active {
+  background-color: #5643fa;
+  border-radius: 5rem;
+}
+.option a:link svg,
+.option a:visited svg {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.main-btn:link,
+.main-btn:visited {
+  text-decoration: none;
+  font-size: 1.6rem;
+  color: white;
+  padding: 1rem 0;
+  /* background-color: #1c7ed6; */
+  background-image: linear-gradient(to right bottom, #2998ff, #5643fa);
+  border-radius: 1rem;
+  transition: all 0.3s;
+  text-align: center;
+}
+.main-btn:hover,
+.main-btn:active {
+  background-color: #1665ab;
+}
+.add-card {
+  width: 15rem;
+  height: 25rem;
+  transition: all 0.4s;
+}
+.add-card:hover svg {
+  stroke: rgb(160, 243, 160);
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.plus {
+  width: 10rem;
+  height: 10rem;
+  stroke: white;
+}
+
+@media screen and (max-width: 800px) {
+  .card .front .course-about {
+    display: none;
+  }
+  .card .front .mobile-part {
+    display: block;
+  }
+  .back {
+    display: none;
+  }
+}

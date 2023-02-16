@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.first-head {
+  border-bottom: 1px solid #d9d7f1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.first-head .logo-filter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.first-head .logo-filter a:link,
+.first-head .logo-filter a:visited {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  font-size: 2.5rem;
+  color: black;
+}
+.first-head .logo-filter a:link span,
+.first-head .logo-filter a:visited span {
+  color: #6741d9;
+  font-weight: 700;
+}
+.first-head .logo-filter .filter {
+  display: flex;
+  flex-direction: column;
+}
+.first-head .logo-filter .filter select {
+  background-color: white;
+  border: none;
+  font-size: 1.4rem;
+}
+.first-head .profile {
+  border-left: 1px solid #d9d7f1;
+  padding: 0 0.8rem;
+}
+.first-head .profile img {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  border: 2px solid grey;
+}
+
+.last-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.last-head a:link,
+.last-head a:visited {
+  padding: 1rem;
+  font-size: 1.4rem;
+  text-decoration: none;
+  background-color: #5f3dc4;
+  color: white;
+}
+.last-head a:hover,
+.last-head a:active {
+  background-color: #7c51fc;
+}
+
+.qa-section {
+  display: grid;
+  grid-template-columns: 1fr 23rem;
+}
+.qa-section .question-cont {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5rem;
+}
+.qa-section .question-cont .the-question {
+  margin-top: 5rem;
+  width: 80%;
+}
+.qa-section .question-cont .total {
+  font-size: 2rem;
+}
+.qa-section .question-cont .question-title:link,
+.qa-section .question-cont .question-title:visited {
+  line-height: 2.5rem;
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: #2a02a1;
+}
+.qa-section .question-cont .question-title:hover,
+.qa-section .question-cont .question-title:active {
+  text-decoration: underline;
+}
+.qa-section .question-cont .about-que {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.qa-section .question-cont .about-que .time {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 1.2rem;
+}
+.qa-section .question-cont .about-que .time svg {
+  width: 2rem;
+  height: 2rem;
+  stroke: grey;
+}
+.qa-section .question-cont .about-que .asker:link,
+.qa-section .question-cont .about-que .asker :visited {
+  text-decoration: none;
+  font-size: 1.4rem;
+  color: #3a3e42;
+}
+.qa-section .question-cont .about-que .asker:hover,
+.qa-section .question-cont .about-que .asker:active {
+  text-decoration: underline;
+}
+.qa-section .question-cont .about-que .answer:link,
+.qa-section .question-cont .about-que .answer:visited {
+  text-decoration: none;
+  font-size: 1.4rem;
+  padding: 0.2rem 1rem;
+  background-color: rgb(13, 151, 13);
+  color: #fff;
+  border-radius: 3rem;
+}
+.qa-section .question-cont .about-que .answer:hover,
+.qa-section .question-cont .about-que .answer:active {
+  background-color: darkgreen;
+  text-decoration: none;
+}
+
+.popular {
+  height: 100vh;
+  background-color: #f1f3f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  border-radius: 1rem;
+  border: 1px solid #5f3dc4;
+}
+.popular p {
+  font-size: 2rem;
+  margin-top: 2rem;
+  font-weight: 600;
+  color: #3a3e42;
+}
+.popular .top-users a:link,
+.popular .top-users a:visited {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.popular .top-users a:link .pro-cont,
+.popular .top-users a:visited .pro-cont {
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  align-items: center;
+}
+.popular .top-users a:link .pro-cont img,
+.popular .top-users a:visited .pro-cont img {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  border: 2px solid grey;
+}
+.popular .top-users a:link .pro-cont .name,
+.popular .top-users a:visited .pro-cont .name {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #3a3e42;
+}
+.popular .top-users a:link .pro-cont .role,
+.popular .top-users a:visited .pro-cont .role {
+  grid-column: 2/-1;
+  font-size: 1.2rem;
+  color: #5f3dc4;
+  margin: 0;
+}/*# sourceMappingURL=algoNetQuestion.css.map */
