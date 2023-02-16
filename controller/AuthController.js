@@ -22,7 +22,7 @@ exports.signup = CatchAsync(async (req, res, next) => {
     phone: req.body.phone,
     gender: req.body.gender,
     password: req.body.password,
-    passwordConform: req.body.passwordConform,
+    passwordConfirm: req.body.passwordConfirm,
   };
   if (req.file) {
     theBody.photo = req.file.filename;
@@ -233,7 +233,7 @@ exports.resetPassword = CatchAsync(async (req, res, next) => {
   }
 
   user.password = req.body.password;
-  user.passwordConform = req.body.passwordConform;
+  user.passwordconfirm = req.body.passwordconfirm;
   user.passwordResetToken = undefined;
   user.passwordResetExpires = undefined;
   await user.save();
@@ -269,7 +269,7 @@ exports.updatePassword = CatchAsync(async (req, res, next) => {
   // }
   //3) if so, update password
   user.password = req.body.password;
-  user.passwordConform = req.body.passwordConform;
+  user.passwordconfirm = req.body.passwordconfirm;
   await user.save();
 
   //4) Log user in, send JWT

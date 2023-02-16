@@ -1,13 +1,16 @@
 const AppError = require("../utils/AppError");
+
 const handdleCastErrorDB = (err) => {
   const message = `Invalid ${err.path}: ${err.value._id}.`;
   return new AppError(message, 400);
 };
+
 const handdleDuplicateFeildsDB = (err) => {
   const value = err.errmsg.match(/(["'])(?:\\.|[^\\])*?\1/)[0];
   const message = `Duplicate Field value: ${value}, use different value!`;
   return new AppError(message, 400);
 };
+
 const handdleValidationErrorDB = (err) => {
   const errors = Object.values(err.errors).map((el) => el.message);
   const message = `Invalid input Data: ${errors.join(". ")}`;

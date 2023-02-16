@@ -8,6 +8,7 @@ Router.route("/signup").post(
   photoUploadingFunctions.resizeUserPhotoSignup,
   AuthController.signup
 );
+
 Router.route("/login").post(AuthController.login);
 Router.route("/logout").get(AuthController.logout);
 Router.route("/user/forgotPassword").post(AuthController.forgotPassword);

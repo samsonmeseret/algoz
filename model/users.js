@@ -28,7 +28,12 @@ const UserSchema = new mongoose.Schema({
   },
   course: {
     type: [mongoose.SchemaTypes.ObjectId],
-    ref: "course",
+    ref: "Course",
+    default: null,
+  },
+  batch: {
+    type: [mongoose.SchemaTypes.ObjectId],
+    ref: "Batch",
     default: null,
   },
   gender: {
@@ -44,7 +49,7 @@ const UserSchema = new mongoose.Schema({
     minlength: [8, "Password too short, Password should be more than 8 char"],
     select: false,
   },
-  passwordConform: {
+  passwordConfirm: {
     type: String,
     required: [true, "Please provide your Password Confirm"],
     validate: {
@@ -69,12 +74,12 @@ const UserSchema = new mongoose.Schema({
   },
 });
 //pre is built in mongoose Middleware!
-// hashing the password failed before saving in the db and removing the conform field
+// hashing the password failed before saving in the db and removing the confirm field
 UserSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
 
   this.password = await bcrypt.hash(this.password, 10);
-  this.passwordConform = undefined;
+  this.passwordConfirm = undefined;
   next();
 });
 
