@@ -4,6 +4,7 @@ const AppError = require("../utils/AppError");
 const CatchAsync = require("../utils/CatchAsync");
 const factory = require("./factoryController");
 
+// Create a Course
 exports.createCourse = CatchAsync(async (req, res, next) => {
   const theBodyData = {
     title: req.body.title,
@@ -21,6 +22,8 @@ exports.createCourse = CatchAsync(async (req, res, next) => {
     data: { savedCourse },
   });
 });
+
+// Update a Course
 exports.updateCourse = CatchAsync(async (req, res, next) => {
   let theBodyData = {};
 
@@ -32,10 +35,15 @@ exports.updateCourse = CatchAsync(async (req, res, next) => {
     theBodyData.photo = req.file.filename;
   }
   const id = req.params.id;
-  const editedCourse = await Course.findByIdAndUpdate({ _id: id }, theBodyData);
+  const editedCourse = await Course.findByIdAndUpdate(
+    { _id: id },
+    theBodyData,
+    { new: true }
+  );
 
   res.status(200).json({
     status: "success",
+    message: "Course successfully Updated",
     data: editedCourse,
   });
 });
@@ -105,6 +113,7 @@ exports.findAllCourse = CatchAsync(async (req, res, next) => {
   }
 });
 
+// find a Course
 exports.findCourse = CatchAsync(async (req, res, next) => {
   const id = req.params.id;
   const singleCourse = await Course.findById({ _id: id }).populate({
