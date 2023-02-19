@@ -5,9 +5,9 @@ const handdleCastErrorDB = (err) => {
   return new AppError(message, 400);
 };
 
-const handdleDuplicateFeildsDB = (err) => {
-  const value = err.errmsg.match(/(["'])(?:\\.|[^\\])*?\1/)[0];
-  const message = `Duplicate Field value: ${value}, use different value!`;
+const handdleDuplicateFieldsDB = (err) => {
+  const field = err?.errmsg.match(/(["'])(?:\\.|[^\\])*?\1/)[0];
+  const message = `Duplicate Field value: ${field}, use different value!`;
   return new AppError(message, 400);
 };
 
@@ -16,7 +16,7 @@ const handdleValidationErrorDB = (err) => {
   const message = `Invalid input Data: ${errors.join(". ")}`;
   return new AppError(message, 400);
 };
-const handdleJWTtokenError = (err) => {
+const handdleJWTTokenError = (err) => {
   // const errors = err.name;
   // const message = "Invalid token! Please sign in again.";
   return new AppError("Invalid token! Please sign in again.", 401);
@@ -61,11 +61,11 @@ const globalErrorHanddler = (err, req, res, next) => {
   else if (process.env.NODE_ENV === "production") {
     let error = err;
     if (error.name === "CastError") error = handdleCastErrorDB(error);
-    if (error.code === 11000) error = handdleDuplicateFeildsDB(error);
+    if (error.code === 11000) error = handdleDuplicateFieldsDB(error);
     if (error.name === "ValidationError")
       error = handdleValidationErrorDB(error);
-    if (error.name === "JsonWebTokenError") error = handdleJWTtokenError(error);
-    if (error.name === "TokenExpiredError") error = handdleJWTtokenError(error);
+    if (error.name === "JsonWebTokenError") error = handdleJWTTokenError(error);
+    if (error.name === "TokenExpiredError") error = handdleJWTTokenError(error);
 
     sendErrorPro(error, res);
   }

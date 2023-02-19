@@ -4,7 +4,7 @@ const courseController = require("../controller/courseController");
 const AuthController = require("../controller/AuthController");
 const coursePhotoUploader = require("../middlewares/coursePhotoHanddler");
 //COURSE ROUTE
-Router.route("/course")
+Router.route("/courses")
   .get(AuthController.protect, courseController.findAllCourse)
   .post(
     AuthController.protect,
@@ -12,7 +12,7 @@ Router.route("/course")
     coursePhotoUploader.coursePhotoUploader,
     courseController.createCourse
   );
-Router.route("/course/:id")
+Router.route("/courses/:id")
   .get(courseController.findCourse)
   .patch(
     AuthController.protect,
@@ -28,18 +28,18 @@ Router.route("/course/:id")
 
 // --- RENDERING PAGES ------------------/////////////////
 //
-Router.route("/course-inst/:id").get(
-  AuthController.protect,
-  courseController.courseToBeApplied
-);
-Router.route("/course/:id/edit").get(
-  AuthController.protect,
-  AuthController.restrictTo("admin"),
-  courseController.updateCoursePage
-);
-Router.route("/Students/course/add").get(
-  AuthController.protect,
-  AuthController.restrictTo("admin"),
-  courseController.addCoursePage
-);
+// Router.route("/course-inst/:id").get(
+//   AuthController.protect,
+//   courseController.courseToBeApplied
+// );
+// Router.route("/course/:id/edit").get(
+//   AuthController.protect,
+//   AuthController.restrictTo("admin"),
+//   courseController.updateCoursePage
+// );
+// Router.route("/Students/course/add").get(
+//   AuthController.protect,
+//   AuthController.restrictTo("admin"),
+//   courseController.addCoursePage
+// );
 module.exports = Router;

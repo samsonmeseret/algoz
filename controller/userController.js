@@ -6,10 +6,10 @@ const CatchAsync = require("../utils/CatchAsync");
 const factory = require("./factoryController");
 
 //filtering objects for update fields for the user updating himself
-const filterObj = (obj, ...allowedFilds) => {
+const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
   Object.keys(obj).forEach((el) => {
-    if (allowedFilds.includes(el)) newObj[el] = obj[el];
+    if (allowedFields.includes(el)) newObj[el] = obj[el];
   });
   return newObj;
 };
@@ -17,10 +17,10 @@ const filterObj = (obj, ...allowedFilds) => {
 // updating user informations
 exports.updateMe = CatchAsync(async (req, res, next) => {
   //1) Create error if user POSTs password data
-  if (req.body.password || req.body.passwordConform) {
+  if (req.body.password || req.body.passwordConfirm) {
     return next(
       new AppError(
-        "This route is for password update. Please use /updatePassword.",
+        "This route is for password update. Please use user/updatePassword.",
         400
       )
     );
@@ -28,8 +28,8 @@ exports.updateMe = CatchAsync(async (req, res, next) => {
   //2) Filtered Out unwanted fields
   const filteredBody = filterObj(
     req.body,
-    "firstname",
-    "lastname",
+    "firstName",
+    "lastName",
     "email",
     "gender",
     "phone"
@@ -37,11 +37,11 @@ exports.updateMe = CatchAsync(async (req, res, next) => {
   if (req.file) filteredBody.photo = req.file.filename;
   let thingsToBeUpdated = {};
 
-  if (filteredBody.firstname) {
-    thingsToBeUpdated.firstname = filteredBody.firstname;
+  if (filteredBody.firstName) {
+    thingsToBeUpdated.firstName = filteredBody.firstName;
   }
-  if (filteredBody.lastname) {
-    thingsToBeUpdated.lastname = filteredBody.lastname;
+  if (filteredBody.lastName) {
+    thingsToBeUpdated.lastName = filteredBody.lastName;
   }
   if (filteredBody.email) {
     thingsToBeUpdated.email = filteredBody.email;
@@ -80,7 +80,7 @@ exports.deleteMe = CatchAsync(async (req, res, next) => {
   });
 });
 
-//geting his oun profile
+//getting his oun profile
 
 exports.getMe = CatchAsync(async (req, res, next) => {
   const currentUser = await User.findById(req.user.id);
@@ -101,15 +101,15 @@ exports.getMySetting = CatchAsync(async (req, res, next) => {
 });
 
 //ONLY FOR ADMINS //
-exports.findAlluser = CatchAsync(async (req, res, next) => {
-  const { firstname, lastname, email, sort, field } = req.query;
+exports.findAllUser = CatchAsync(async (req, res, next) => {
+  const { firstName, lastName, email, sort, field } = req.query;
 
   let QueryObj = {};
-  if (firstname) {
-    QueryObj.firstname = { $regex: firstname, $options: "i" };
+  if (firstName) {
+    QueryObj.firstName = { $regex: firstName, $options: "i" };
   }
-  if (lastname) {
-    QueryObj.lastname = { $regex: lastname, $options: "i" };
+  if (lastName) {
+    QueryObj.lastName = { $regex: lastName, $options: "i" };
   }
   if (email) {
     QueryObj.email = { $regex: email, $options: "i" };
@@ -117,16 +117,16 @@ exports.findAlluser = CatchAsync(async (req, res, next) => {
   // console.log(QueryObj);
   let result = User.find(QueryObj);
   if (sort) {
-    const sortlist = sort.split(",").join(" ");
-    result = result.sort(sortlist);
+    const sortList = sort.split(",").join(" ");
+    result = result.sort(sortList);
   } else {
     result = result.sort("createdAt");
   }
 
-  //select the elements to apper from the filter
+  //select the elements to appear from the filter
   if (field) {
-    const fieldlist = field.split(",").join(" ");
-    result = result.select(fieldlist);
+    const fieldList = field.split(",").join(" ");
+    result = result.select(fieldList);
   }
 
   const allUser = await result;
@@ -168,13 +168,46 @@ exports.deleteUser = CatchAsync(async (req, res, next) => {
   });
 });
 
-exports.updateUserRole = CatchAsync(async (req, res, next) => {
-  const filteredBody = filterObj(req.body, "role");
+exports.updateUser = CatchAsync(async (req, res, next) => {
+  const filteredBody = filterObj(
+    req.body,
+    "firstName",
+    "lastName",
+    "email",
+    "gender",
+    "phone",
+    "role"
+  );
+  if (req.file) filteredBody.photo = req.file.filename;
+  let thingsToBeUpdated = {};
+
+  if (filteredBody.firstName) {
+    thingsToBeUpdated.firstName = filteredBody.firstName;
+  }
+  if (filteredBody.lastName) {
+    thingsToBeUpdated.lastName = filteredBody.lastName;
+  }
+  if (filteredBody.email) {
+    thingsToBeUpdated.email = filteredBody.email;
+  }
+  if (filteredBody.phone) {
+    thingsToBeUpdated.phone = filteredBody.phone;
+  }
+  if (filteredBody.gender) {
+    thingsToBeUpdated.gender = filteredBody.gender;
+  }
+  if (filteredBody.role) {
+    thingsToBeUpdated.role = filteredBody.role;
+  }
+  if (filteredBody.photo) {
+    thingsToBeUpdated.photo = filteredBody.photo;
+  }
+
   const id = req.params.id;
   //3) Update user document
   const updatedUserRole = await User.findByIdAndUpdate(
     { _id: id },
-    filteredBody,
+    thingsToBeUpdated,
     {
       new: true,
       runValidators: false,

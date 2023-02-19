@@ -30,7 +30,7 @@ const app = express();
 //Secure the Header
 // app.use(helmet());
 app.use(cors());
-//Limit the requsts from the same IP's....protections against {DDOS & brute forse attacts}
+//Limit the requests from the same IP's....protections against {DDOS & brute force attacks}
 const Limiter = rateLimit({
   max: 1000,
   windowMs: 60 * 60 * 1000,

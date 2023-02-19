@@ -14,21 +14,55 @@ const signToken = (id) => {
   });
 };
 
+const filterObj = (obj, ...allowedFields) => {
+  const newObj = {};
+  Object.keys(obj).forEach((el) => {
+    if (allowedFields.includes(el)) newObj[el] = obj[el];
+  });
+  return newObj;
+};
+
 exports.signup = CatchAsync(async (req, res, next) => {
-  const theBody = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    phone: req.body.phone,
-    gender: req.body.gender,
-    password: req.body.password,
-    passwordConfirm: req.body.passwordConfirm,
-  };
-  if (req.file) {
-    theBody.photo = req.file.filename;
+  const filteredBody = filterObj(
+    req.body,
+    "firstName",
+    "lastName",
+    "email",
+    "password",
+    "passwordConfirm",
+    "gender",
+    "phone"
+  );
+  if (req.file) filteredBody.photo = req.file.filename;
+
+  let objReceived = {};
+
+  if (filteredBody.firstName) {
+    objReceived.firstName = filteredBody.firstName;
+  }
+  if (filteredBody.lastName) {
+    objReceived.lastName = filteredBody.lastName;
+  }
+  if (filteredBody.email) {
+    objReceived.email = filteredBody.email;
+  }
+  if (filteredBody.phone) {
+    objReceived.phone = filteredBody.phone;
+  }
+  if (filteredBody.gender) {
+    objReceived.gender = filteredBody.gender;
+  }
+  if (filteredBody.password) {
+    objReceived.password = filteredBody.password;
+  }
+  if (filteredBody.passwordConfirm) {
+    objReceived.passwordConfirm = filteredBody.passwordConfirm;
+  }
+  if (filteredBody.photo) {
+    objReceived.photo = filteredBody.photo;
   }
 
-  const savedUser = await User.create(theBody);
+  const savedUser = await User.create(objReceived);
 
   const token = signToken(savedUser._id);
   const cookieOptions = {
@@ -233,7 +267,7 @@ exports.resetPassword = CatchAsync(async (req, res, next) => {
   }
 
   user.password = req.body.password;
-  user.passwordconfirm = req.body.passwordconfirm;
+  user.passwordConfirm = req.body.passwordConfirm;
   user.passwordResetToken = undefined;
   user.passwordResetExpires = undefined;
   await user.save();
@@ -269,7 +303,7 @@ exports.updatePassword = CatchAsync(async (req, res, next) => {
   // }
   //3) if so, update password
   user.password = req.body.password;
-  user.passwordconfirm = req.body.passwordconfirm;
+  user.passwordConfirm = req.body.passwordConfirm;
   await user.save();
 
   //4) Log user in, send JWT

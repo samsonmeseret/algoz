@@ -18,6 +18,7 @@ const UserSchema = new mongoose.Schema({
   },
   email: {
     unique: [true, "this email exists in the system try other"],
+    required: [true, "Please provide your Email Address"],
     type: String,
     validate: [validator.isEmail, "Please provide a valid email Address"],
     lowercase: true,
@@ -25,6 +26,7 @@ const UserSchema = new mongoose.Schema({
   phone: {
     type: String,
     unique: [true, "this phone already in use please provide other"],
+    required: [true, "Please provide your phone Number"],
   },
   course: {
     type: [mongoose.SchemaTypes.ObjectId],

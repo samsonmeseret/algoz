@@ -2,6 +2,7 @@ const { Schema, model, SchemaTypes } = require("mongoose");
 
 const batchSchema = new Schema(
   {
+    course: { type: SchemaTypes.ObjectId, ref: "Course" },
     phase: [{ type: SchemaTypes.ObjectId, ref: "Phases" }],
     batchName: {
       type: String,
