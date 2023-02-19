@@ -8,7 +8,7 @@ const User = require("../model/users");
 exports.createCourse = CatchAsync(async (req, res, next) => {
   const theBodyData = {
     title: req.body.title,
-    description: req.body.description,
+    desc: req.body.desc,
     price: req.body.price,
     instructor: req.body.instructor,
   };
@@ -26,7 +26,7 @@ exports.updateCourse = CatchAsync(async (req, res, next) => {
   let theBodyData = {};
 
   if (req.body.title) theBodyData.title = req.body.title;
-  if (req.body.description) theBodyData.description = req.body.description;
+  if (req.body.desc) theBodyData.desc = req.body.desc;
   if (req.body.price) theBodyData.price = req.body.price;
   if (req.body.instructor) theBodyData.instructor = req.body.instructor;
   if (req.file) {
@@ -103,15 +103,14 @@ exports.findAllCourse = CatchAsync(async (req, res, next) => {
   } else {
     res.status(200).json({
       message: "success",
-      data: { allCourse },
       total: allCourse.length,
+      data: { allCourse },
     });
     // res.status(200).render("course", { allCourse, currentUser });
   }
 });
 
 exports.findCourse = CatchAsync(async (req, res, next) => {
-  const currentUser = req.user;
   const id = req.params.id;
   const singleCourse = await Course.findById({ _id: id }).populate({
     path: "instructor",

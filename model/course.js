@@ -7,7 +7,7 @@ const courseSchema = new mongoose.Schema({
     unique: [true, "Can not Create a Course with the same title"],
     minlength: 1,
   },
-  description: {
+  desc: {
     type: String,
     required: [true, "Please provide course description"],
     // minlength: 50
