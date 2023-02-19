@@ -26,20 +26,4 @@ Router.route("/courses/:id")
     courseController.deleteCourse
   );
 
-// --- RENDERING PAGES ------------------/////////////////
-//
-// Router.route("/course-inst/:id").get(
-//   AuthController.protect,
-//   courseController.courseToBeApplied
-// );
-// Router.route("/course/:id/edit").get(
-//   AuthController.protect,
-//   AuthController.restrictTo("admin"),
-//   courseController.updateCoursePage
-// );
-// Router.route("/Students/course/add").get(
-//   AuthController.protect,
-//   AuthController.restrictTo("admin"),
-//   courseController.addCoursePage
-// );
 module.exports = Router;

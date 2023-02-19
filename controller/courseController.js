@@ -3,7 +3,6 @@ const Course = require("../model/course");
 const AppError = require("../utils/AppError");
 const CatchAsync = require("../utils/CatchAsync");
 const factory = require("./factoryController");
-const User = require("../model/users");
 
 exports.createCourse = CatchAsync(async (req, res, next) => {
   const theBodyData = {
@@ -90,9 +89,6 @@ exports.findAllCourse = CatchAsync(async (req, res, next) => {
     result = result.select(fieldList);
   }
 
-  // const query = Course.find(QueryObj);
-  // console.log(QueryObj);
-
   const allCourse = await result;
   // const allCourse = await Course.find(QueryObj);
   if (!allCourse) {
@@ -106,7 +102,6 @@ exports.findAllCourse = CatchAsync(async (req, res, next) => {
       total: allCourse.length,
       data: { allCourse },
     });
-    // res.status(200).render("course", { allCourse, currentUser });
   }
 });
 
@@ -119,31 +114,6 @@ exports.findCourse = CatchAsync(async (req, res, next) => {
   res.status(200).json({
     status: "success",
     singleCourse,
-  });
-});
-
-exports.courseToBeApplied = CatchAsync(async (req, res, next) => {
-  const currentUser = req.user;
-  const id = req.params.id;
-  const singleCourse = await Course.findById({ _id: id });
-  res.status(200).render("hire", { currentUser, singleCourse });
-});
-exports.updateCoursePage = CatchAsync(async (req, res) => {
-  const currentUser = req.user;
-  const id = req.params.id;
-  const course = await Course.findById({ _id: id });
-
-  res.status(200).json({
-    status: "success",
-  });
-});
-
-exports.addCoursePage = CatchAsync(async (req, res) => {
-  const currentUser = req.user;
-  const inst = await User.find({ role: "instructor" });
-
-  res.status(200).json({
-    inst,
   });
 });
 
