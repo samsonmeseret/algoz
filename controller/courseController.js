@@ -50,7 +50,6 @@ exports.updateCourse = CatchAsync(async (req, res, next) => {
 
 exports.findAllCourse = CatchAsync(async (req, res, next) => {
   //basic QUery
-  const currentUser = req.user;
   const { title, numericFilter, sort, field } = req.query;
   // let QueryObj = { ...req.query };
   let QueryObj = {};
@@ -114,16 +113,6 @@ exports.findAllCourse = CatchAsync(async (req, res, next) => {
 });
 
 // find a Course
-exports.findCourse = CatchAsync(async (req, res, next) => {
-  const id = req.params.id;
-  const singleCourse = await Course.findById({ _id: id }).populate({
-    path: "instructor",
-    select: "firstName lastName",
-  });
-  res.status(200).json({
-    status: "success",
-    singleCourse,
-  });
-});
+exports.findCourse = factory.findOne(Course);
 
 exports.deleteCourse = factory.deleteOne(Course);

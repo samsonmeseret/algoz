@@ -13,7 +13,7 @@ exports.deleteOne = (Model) =>
     } else {
       res.status(200).json({
         status: "success",
-        data: { doc },
+        message: "Document has been deleted successfully",
       });
     }
   });
