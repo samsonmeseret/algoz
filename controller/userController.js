@@ -150,13 +150,20 @@ exports.getUser = CatchAsync(async (req, res, next) => {
   const currentUser = req.user;
   const id = req.params.id;
   const foundUser = await User.findById({ _id: id });
-  // console.log(suser);
-  // res.status(200).render("userDisplay", { currentUser, suser });
+  if(!foundUser){
+    res.status(404).json({
+      status: "success",
+      message: "User not found"
+    });
+  }else{
 
-  res.status(200).json({
-    status: "success",
-    foundUser,
-  });
+    res.status(200).json({
+      status: "success",
+      foundUser,
+    });
+  }
+
+
 });
 exports.deleteUser = CatchAsync(async (req, res, next) => {
   const id = req.params.id;

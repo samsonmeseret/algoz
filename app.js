@@ -19,7 +19,7 @@ const answerRouter = require("./route/answerRouter");
 const path = require("path");
 const globalErrorHanddler = require("./middlewares/errorHanddler");
 const notFound = require("./route/notFound");
-const AppError = require("./utils/AppError");
+
 const CatchAsync = require("./utils/CatchAsync");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
@@ -29,7 +29,7 @@ const app = express();
 
 //Secure the Header
 // app.use(helmet());
-app.use(cors());
+app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
 //Limit the requests from the same IP's....protections against {DDOS & brute force attacks}
 const Limiter = rateLimit({
   max: 1000,
@@ -55,19 +55,13 @@ app.use(xss());
 
 app.use(
   hpp({
-    whitelist: ["price"],
+    // whitelist: ["price"],
   })
 );
 
-app.get("/pp", (req, res) => {
-  res.status(200).render("users");
-});
-
 app.get("/test", (req, res) => {
   res.send("this is a test");
-
-}
-)
+});
 app.use(authRouter);
 app.use(questionRouter);
 app.use(answerRouter);
@@ -88,9 +82,9 @@ const start = CatchAsync(async (uri, port) => {
   await mongoose
     .connect(uri)
     .then(console.log("Database connected Successfully!"))
-    .catch((err)=>{
-      console.log(err.message)
-    })
+    .catch((err) => {
+      console.log(err.message);
+    });
   app.listen(port, console.log(`server running on port: ${port}`));
 });
 
