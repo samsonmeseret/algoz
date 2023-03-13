@@ -40,9 +40,11 @@ app.use("/", Limiter);
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 // app.set("view engine", "pug");
 // app.set("views", path.join(__dirname, "views"));
 // app.use(express.static(path.join(__dirname, "public")));
+
 //Data Sanitization against NoSQL query injections
 app.use(mongoSanitize());
 
@@ -60,10 +62,12 @@ app.use(
 app.get("/pp", (req, res) => {
   res.status(200).render("users");
 });
-// app.get("/ss", (req, res) => {
-//   res.status(200).render("studyspace");
-// });
-// app.use(getRouter);
+
+app.get("/test", (req, res) => {
+  res.send("this is a test");
+
+}
+)
 app.use(authRouter);
 app.use(questionRouter);
 app.use(answerRouter);
@@ -83,7 +87,10 @@ const start = CatchAsync(async (uri, port) => {
   mongoose.set("strictQuery", true);
   await mongoose
     .connect(uri)
-    .then(console.log("Database connected Successfully!"));
+    .then(console.log("Database connected Successfully!"))
+    .catch((err)=>{
+      console.log(err.message)
+    })
   app.listen(port, console.log(`server running on port: ${port}`));
 });
 
